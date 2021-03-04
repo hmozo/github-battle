@@ -4,7 +4,7 @@ import { FaCompass, FaBriefcase, FaUsers,FaUserFriends, FaCode, FaUser } from 'r
 //import { RuntimeGlobals } from 'webpack'
 import Card from './Card'
 import PropTypes from 'prop-types'
-
+import Loading from './Loading'
 
 function ProfileList({ profile }){
     return(
@@ -72,7 +72,7 @@ export default class Results extends React.Component{
         const { winner, loser, error, loading }= this.state
 
         if(loading===true){
-            return <p>Loading...</p>
+            return <Loading />
         }
 
         if(error){
@@ -94,7 +94,7 @@ export default class Results extends React.Component{
                         <ProfileList profile= {winner.profile} />
                     </Card>
                     <Card
-                        header= {winner.score===loser.score?'Tie':'Winner'}
+                        header= {winner.score===loser.score?'Tie':'Loser'}
                         subheader= {`Score: ${loser.score.toLocaleString()}`}
                         avatar= {loser.profile.avatar_url}
                         href= {loser.profile.html_url}
@@ -119,3 +119,4 @@ Results.propTypes= {
     playerTwo: PropTypes.string.isRequired,
     onReset: PropTypes.func.isRequired
 }
+

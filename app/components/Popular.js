@@ -6,6 +6,8 @@ import { fetchPopularRepos } from '../utils/api'
 
 import { FaBeer } from 'react-icons/fa'
 import { FaUser, FaStar, FaCodeBranch, FaExclamationTriangle } from 'react-icons/fa'
+import Loading from './Loading'
+
 
 function LanguagesNav({ selected, onUpdateLanguage }){
     const languages= ['All', 'Javascript', 'Ruby', 'Java', 'CSS', 'Python']
@@ -148,7 +150,7 @@ export default class Popular extends React.Component{
                     onUpdateLanguage={this.updateLanguage}
                 />
 
-                {this.isLoading() && <p>LOADING...<FaBeer /></p>}
+                {this.isLoading() && <Loading text='Fetching Repos...' /> }
 
                 {error && <p>{error}</p>}
                 
